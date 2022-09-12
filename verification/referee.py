@@ -9,8 +9,8 @@ api.add_listener(
     CheckiOReferee(
         tests=TESTS,
         function_name={
-            "python": "adjusted_letters",
-            "js": "adjustedLetters"
+            "python": "adjacent_letters",
+            "js": "adjacentLetters"
         },
         cover_code={
             'python-3': {},

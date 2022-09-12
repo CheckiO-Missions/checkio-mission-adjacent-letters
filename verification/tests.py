@@ -11,26 +11,52 @@ Each test is a dict with
 TESTS = {
     "Basics": [
         {
-            "input": [3, 2],
-            "answer": 5,
-            "explanation": "3+2=?"
+            "input": ["adjacent_letters"],
+            "answer": "adjacent_lrs"
         },
         {
-            "input": [5, 7],
-            "answer": 12,
-            "explanation": "5+7=?"
+            "input": [""],
+            "answer": ""
+        },
+        {
+            "input": ["aaa"],
+            "answer": "a"
+        },
+        {
+            "input": ["ABBA"],
+            "answer": ""
         }
     ],
     "Extra": [
         {
-            "input": [6, 3],
-            "answer": 9,
-            "explanation": "6+3=?"
+            "input": ["lllllet's get rrready to the rrrummmmmble!"],
+            "answer": "let's get ready to the rumble!"
         },
         {
-            "input": [6, 7],
-            "answer": 13,
-            "explanation": "6+7=?"
+            "input": ["abcd!dcba"],
+            "answer": "abcd!dcba"
+        },
+        {
+            "input": ["abcddcba"],
+            "answer": ""
+        },
+        {
+            "input": ["mississippi"],
+            "answer": "m"
+        },
+        {
+            "input": ["mammal"],
+            "answer": "ml"
+        },
+        {
+            "input": ["kinnikinnik"],
+            "answer": "k", 
+            "explanation": "That the real word! Check wiki"
+        },
+        {
+            "input": ["tattarrattat"],
+            "answer": "",
+            "explanation": "That the real word! Check wiki"
         }
     ]
 }

@@ -2,19 +2,19 @@
 {% block env %}{% endblock env %}
 
 {% block start %}
-def adjusted_letters(line: str) -> str:
+def adjacent_letters(line: str) -> str:
     # your code here
     return ""
 {% endblock start %}
 
 {% block example %}
 print('Example:')
-print(adjusted_letters("abbaca"))
+print(adjacent_letters("abbaca"))
 {% endblock %}
 
 {% block tests %}
 {% for t in tests %}
-assert {% block call %}adjusted_letters({{t.input|p_args}})
+assert {% block call %}adjacent_letters({{t.input|p_args}})
 {% endblock %} == {% block result %}{{t.answer|p}}{% endblock %}{% endfor %}
 {% endblock %}
 
