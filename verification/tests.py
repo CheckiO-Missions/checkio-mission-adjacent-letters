@@ -25,7 +25,7 @@ TESTS = {
         {
             "input": ["ABBA"],
             "answer": ""
-        }
+        },
     ],
     "Extra": [
         {
@@ -57,6 +57,6 @@ TESTS = {
             "input": ["tattarrattat"],
             "answer": "",
             "explanation": "That the real word! Check wiki"
-        }
+        },
     ]
 }

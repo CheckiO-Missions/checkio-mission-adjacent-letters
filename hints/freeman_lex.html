@@ -1,0 +1,130 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        I have no idea how to start solving this mission.
+    </div>
+    <div class="answer">
+        <p>
+            Catch an idea 💡! To iterate over the given string and add each character to a resulted string if it's not the same as previous character. Otherwise just remove the last character from the resulted string.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Ok, what should I start from?
+    </div>
+    <div class="answer">
+        <p>
+            Let's declare a resulted string, which you return at the end.
+        </p>
+        <pre class="brush: python">
+res = ""
+...
+return res
+        </pre>
+        <p>
+            A string may be interpreted as a sequence in Python. It means, you can iterate over the given string using <a target="_blank" href="https://www.w3schools.com/python/python_for_loops.asp">for</a> loop.
+        </p>
+        <pre class="brush: python">
+for char in line:
+    ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        What to do with each character inside loop?
+    </div>
+    <div class="answer">
+        <p>
+            There are actually two cases: if the character is not the same as previous (already added to the resulted string) or they are equal. If the resulted string is empty, it's the same case as different characters. Use <a target="_blank" href="https://www.w3schools.com/python/python_conditions.asp">if/else</a> statement.
+        </p>
+        <p>
+            So, let's look closer to the first case. If your resulted string is empty or current and previous characters are different:
+        </p>
+        <pre class="brush: python">
+if not res or char != res[-1]:
+    ...
+        </pre>
+        <p>
+            In this case you just add current character to the resulted string.
+        </p>
+        <pre class="brush: python">
+if not res or char != res[-1]:
+    res += char        
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        What should be the other case?
+    </div>
+    <div class="answer">
+        <p>
+            According to the description, you need to remove both adjacent letters if they are the same. One of them is a current character, the second is already added to the resulted string. In this case you just need to remove the last character from the resulted string using <a target="_blank" href="https://www.w3schools.com/python/gloss_python_string_slice.asp">string slicing</a>.
+        </p>
+        <pre class="brush: python">
+else:
+    res = res[:-1]
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        So, how my final solution should look like?
+    </div>
+    <div class="answer">
+        <p>
+            You just need to join all previous hints and wrap your code into function expression. Using type hints for input and output data are highly recommended.
+        </p>
+        <p>Here is the whole solution:</p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def adjacent_letters(line: str) -> str:
+
+    res = ""
+    for char in line:
+        if not res or char != res[-1]:
+            res += char
+        else:
+            res = res[:-1]
+
+    return res
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Show me more solutions!<br />
+        'Cause I wanna be a real 🥇 Python Ninnjaa!
+    </div>
+    <div class="answer">
+        <p>Sure, grab it!</p>
+        <p>
+            Using regular expression module and recursion find two same adjacent letters, replace them with empty line and use this new string as argument for a new function call. Return the line if there no equal adjacent letters left.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+from re import sub, search
+
+
+reg = r'(.)\1'
+
+def adjacent_letters(line: str) -> str:
+
+    return line if not search(reg, line) else adjacent_letters(sub(reg, '', line))
+        </pre>
+        </div>
+        <p>Click <b>Best Solutions</b> at mission menu and see a lot of other interesting solutions!</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Thanks! I know and understand more now! Everything works fine!
+    </div>
+    <div class="answer">
+        Glad to hear it 👍!
+    </div>
+</div>
+</body>
