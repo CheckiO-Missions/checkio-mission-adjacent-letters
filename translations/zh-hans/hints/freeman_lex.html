@@ -1,0 +1,130 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        我不知道如何开始解决这项任务。
+    </div>
+    <div class="answer">
+        <p>
+            给你个建议💡！迭代给定的字符串，如果每个字符与前一个字符不相同，则将每个字符添加到结果字符串中。否则，从结果字符串中删除最后一个字符。
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        好吧，我应该从什么开始呢？
+    </div>
+    <div class="answer">
+        <p>
+            让我们声明一个结果字符串，最后返回。
+        </p>
+        <pre class="brush: python">
+res = ""
+...
+return res
+        </pre>
+        <p>
+            在 Python 中，字符串可以解释为序列。这意味着，您可以使用<a target="_blank" href="https://www.w3schools.com/python/python_for_loops.asp">for</a> 循环遍历给定的字符串。
+        </p>
+        <pre class="brush: python">
+for char in line:
+    ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        如何处理循环中的每个字符？
+    </div>
+    <div class="answer">
+        <p>
+            实际上有两种情况：如果字符与前一个字符不相同（已经添加到结果字符串中），或者它们相等。如果结果字符串为空，则与不同字符的情况相同。使用<a target="_blank" href="https://www.w3schools.com/python/python_conditions.asp">if/else</a> 语句。
+        </p>
+        <p>
+            那么，让我们来看看第一种情况。如果结果字符串为空，或者当前字符和之前字符不同：
+        </p>
+        <pre class="brush: python">
+if not res or char!= res[-1]:
+    ...
+        </pre>
+        <p>
+            在这种情况下，您只需将当前字符添加到结果字符串中。
+        </p>
+        <pre class="brush: python">
+if not res or char!= res[-1]:
+    res += char        
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        另一种情况是什么？
+    </div>
+    <div class="answer">
+        <p>
+            根据描述，如果相邻的两个字母相同，您需要删除它们。其中一个是当前字符，第二个已经添加到结果字符串中。在这种情况下，您只需要使用<a target="_blank" href="https://www.w3schools.com/python/gloss_python_string_slice.asp">string slicing</a> 删除结果字符串中的最后一个字符。
+        </p>
+        <pre class="brush: python">
+else:
+    res = res[:-1]
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        那么，我的最终解决方案应该是怎样的呢？
+    </div>
+    <div class="answer">
+        <p>
+            您只需将之前所有的提示连接起来，并将代码封装为函数表达式。强烈建议对输入和输出数据使用类型提示。
+        </p>
+        <p>以下是整个解决方案：</p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def adjacent_letters(line: str) -> str:
+
+    res = ""
+    for char in line:
+        if not res or char!= res[-1]:
+            res += char
+        else:
+            res = res[:-1]
+
+    return res
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        告诉我更多解决方案！<br />
+        因为我想成为一个真正的 🥇 Python Ninnjaa！
+    </div>
+    <div class="answer">
+        <p>当然，抓住它！</p>
+        <p>
+            使用正则表达式模块和递归找到两个相同的相邻字母，用空行替换它们，并使用新字符串作为新函数调用的参数。如果没有相同的相邻字母，则返回空行。
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+from re import sub, search
+
+
+reg = r'(.)\1'
+
+def adjacent_letters(line: str) -> str:
+
+    return line if not search(reg, line) else adjacent_letters(sub(reg, '', line))
+        </pre>
+        </div>
+        <p>点击任务菜单<b>Best Solutions</b> ，查看更多有趣的解决方案！</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        谢谢！我现在知道并理解了更多！一切正常！
+    </div>
+    <div class="answer">
+        很高兴听到这个消息👍！
+    </div>
+</div>
+</body>
