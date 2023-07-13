@@ -1,0 +1,130 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        Je n'ai aucune idée de la manière de commencer à résoudre cette mission.
+    </div>
+    <div class="answer">
+        <p>
+            Attrapez une idée 💡! Itérer sur la chaîne donnée et ajouter chaque caractère à une chaîne résultante s'il n'est pas le même que le précédent. Sinon, il suffit de supprimer le dernier caractère de la chaîne obtenue.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Ok, par quoi dois-je commencer?
+    </div>
+    <div class="answer">
+        <p>
+            Déclarons une chaîne de résultats, que vous renverrez à la fin.
+        </p>
+        <pre class="brush: python">
+res = ""
+...
+return res
+        </pre>
+        <p>
+            Une chaîne peut être interprétée comme une séquence en Python. Cela signifie que vous pouvez itérer sur la chaîne donnée en utilisant la boucle <a target="_blank" href="https://www.w3schools.com/python/python_for_loops.asp">for</a>.
+        </p>
+        <pre class="brush: python">
+for char in line:
+    ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Que faire de chaque caractère à l'intérieur d'une boucle?
+    </div>
+    <div class="answer">
+        <p>
+            Il y a en fait deux cas: si le caractère n'est pas le même que le précédent (déjà ajouté à la chaîne résultante) ou s'ils sont égaux. Si la chaîne obtenue est vide, c'est le même cas que pour les caractères différents. Utilisez l'instruction <a target="_blank" href="https://www.w3schools.com/python/python_conditions.asp">if/else</a>.
+        </p>
+        <p>
+            Examinons de plus près le premier cas. Si la chaîne obtenue est vide ou si les caractères actuels et précédents sont différents:
+        </p>
+        <pre class="brush: python">
+if not res or char!= res[-1]:
+    ...
+        </pre>
+        <p>
+            Dans ce cas, vous ajoutez simplement le caractère actuel à la chaîne obtenue.
+        </p>
+        <pre class="brush: python">
+if not res or char!= res[-1]:
+    res += char        
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Quel devrait être l'autre cas?
+    </div>
+    <div class="answer">
+        <p>
+            D'après la description, vous devez supprimer les deux lettres adjacentes si elles sont identiques. L'une d'entre elles est un caractère courant, la seconde est déjà ajoutée à la chaîne obtenue. Dans ce cas, il vous suffit de supprimer le dernier caractère de la chaîne obtenue à l'aide de <a target="_blank" href="https://www.w3schools.com/python/gloss_python_string_slice.asp">string slicing</a>.
+        </p>
+        <pre class="brush: python">
+else:
+    res = res[:-1]
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Alors, à quoi devrait ressembler ma solution finale?
+    </div>
+    <div class="answer">
+        <p>
+            Il vous suffit de combiner tous les indices précédents et d'envelopper votre code dans une expression de fonction. Il est fortement recommandé d'utiliser des indications de type pour les données d'entrée et de sortie.
+        </p>
+        <p>Voici la solution complète:</p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def adjacent_letters(line: str) -> str:
+
+    res = ""
+    for char in line:
+        if not res or char!= res[-1]:
+            res += char
+        else:
+            res = res[:-1]
+
+    return res
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Montrez-moi d'autres solutions!<br />
+        parce que je veux être une vraie 🥇 Python Ninnjaa!
+    </div>
+    <div class="answer">
+        <p>Bien sûr, prenez-le!</p>
+        <p>
+            En utilisant le module d'expression régulière et la récursion, trouvez deux lettres adjacentes identiques, remplacez-les par une ligne vide et utilisez cette nouvelle chaîne comme argument pour un nouvel appel de fonction. Retournez la ligne s'il n'y a plus de lettres adjacentes identiques.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+from re import sub, search
+
+
+reg = r'(.)\1'
+
+def adjacent_letters(line: str) -> str:
+
+    return line if not search(reg, line) else adjacent_letters(sub(reg, '', line))
+        </pre>
+        </div>
+        <p>Cliquez sur <b>Best Solutions</b> dans le menu mission et découvrez de nombreuses autres solutions intéressantes!</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Merci beaucoup! Je sais et je comprends mieux maintenant! Tout fonctionne bien!
+    </div>
+    <div class="answer">
+        Heureux de l'apprendre 👍!
+    </div>
+</div>
+</body>
