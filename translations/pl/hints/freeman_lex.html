@@ -1,0 +1,130 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        Nie mam pojęcia, jak zacząć rozwiązywać tę misję.
+    </div>
+    <div class="answer">
+        <p>
+            Proszę złapać jakiś pomysł 💡! Aby iterować po podanym ciągu i dodawać każdy znak do wynikowego ciągu, jeśli nie jest taki sam jak poprzedni znak. W przeciwnym razie proszę usunąć ostatni znak z wynikowego ciągu.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Ok, od czego powinienem zacząć?
+    </div>
+    <div class="answer">
+        <p>
+            Zadeklarujmy wynikowy ciąg znaków, który zwrócimy na końcu.
+        </p>
+        <pre class="brush: python">
+res = ""
+...
+return res
+        </pre>
+        <p>
+            Ciąg może być interpretowany jako sekwencja w Pythonie. Oznacza to, że można iterować po danym ciągu przy użyciu pętli <a target="_blank" href="https://www.w3schools.com/python/python_for_loops.asp">for</a>.
+        </p>
+        <pre class="brush: python">
+for char in line:
+    ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Co zrobić z każdym znakiem wewnątrz pętli?
+    </div>
+    <div class="answer">
+        <p>
+            W rzeczywistości istnieją dwa przypadki: jeśli znak nie jest taki sam jak poprzedni (już dodany do wynikowego ciągu) lub są one równe. Jeśli wynikowy ciąg jest pusty, jest to ten sam przypadek, co różne znaki. Proszę użyć instrukcji <a target="_blank" href="https://www.w3schools.com/python/python_conditions.asp">if/else</a>.
+        </p>
+        <p>
+            Przyjrzyjmy się zatem bliżej pierwszemu przypadkowi. Jeśli wynikowy ciąg jest pusty lub bieżące i poprzednie znaki są różne:
+        </p>
+        <pre class="brush: python">
+if not res or char!= res[-1]:
+    ...
+        </pre>
+        <p>
+            W tym przypadku proszę po prostu dodać bieżący znak do wynikowego ciągu.
+        </p>
+        <pre class="brush: python">
+if not res or char!= res[-1]:
+    res += char        
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Jaki powinien być drugi przypadek?
+    </div>
+    <div class="answer">
+        <p>
+            Zgodnie z opisem, musi Pan usunąć obie sąsiadujące litery, jeśli są takie same. Jedna z nich jest bieżącym znakiem, a druga jest już dodana do wynikowego ciągu. W takim przypadku wystarczy usunąć ostatni znak z wynikowego ciągu za pomocą <a target="_blank" href="https://www.w3schools.com/python/gloss_python_string_slice.asp">string slicing</a>.
+        </p>
+        <pre class="brush: python">
+else:
+    res = res[:-1]
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Jak więc powinno wyglądać moje ostateczne rozwiązanie?
+    </div>
+    <div class="answer">
+        <p>
+            Wystarczy połączyć wszystkie poprzednie podpowiedzi i zawinąć kod w wyrażenie funkcyjne. Używanie podpowiedzi typu dla danych wejściowych i wyjściowych jest wysoce zalecane.
+        </p>
+        <p>Poniżej znajduje się całe rozwiązanie:</p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def adjacent_letters(line: str) -> str:
+
+    res = ""
+    for char in line:
+        if not res or char!= res[-1]:
+            res += char
+        else:
+            res = res[:-1]
+
+    return res
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Proszę pokazać mi więcej rozwiązań!<br />
+        bo chcę być prawdziwą 🥇 Python Ninnjaa!
+    </div>
+    <div class="answer">
+        <p>Jasne, proszę łapać!</p>
+        <p>
+            Używając modułu wyrażeń regularnych i rekurencji proszę znaleźć dwie takie same sąsiadujące litery, zastąpić je pustą linią i użyć tego nowego ciągu jako argumentu dla nowego wywołania funkcji. Proszę zwrócić linię, jeśli nie ma już takich samych sąsiadujących liter.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+from re import sub, search
+
+
+reg = r'(.)\1'
+
+def adjacent_letters(line: str) -> str:
+
+    return line if not search(reg, line) else adjacent_letters(sub(reg, '', line))
+        </pre>
+        </div>
+        <p>Proszę kliknąć <b>Best Solutions</b> w menu misji i zobaczyć wiele innych ciekawych rozwiązań!</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Dzięki! Teraz wiem i rozumiem więcej! Wszystko działa jak należy!
+    </div>
+    <div class="answer">
+        Miło mi to słyszeć 👍!
+    </div>
+</div>
+</body>
