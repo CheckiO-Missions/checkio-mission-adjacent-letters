@@ -1,0 +1,130 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        Ich habe keine Ahnung, wie ich mit der Lösung dieser Aufgabe beginnen soll.
+    </div>
+    <div class="answer">
+        <p>
+            Fangen Sie eine Idee 💡! Iterieren Sie über die gegebene Zeichenkette und fügen Sie jedes Zeichen zu einer resultierenden Zeichenkette hinzu, wenn es nicht mit dem vorherigen Zeichen identisch ist. Andernfalls entfernen Sie einfach das letzte Zeichen aus der resultierenden Zeichenfolge.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Ok, womit soll ich anfangen?
+    </div>
+    <div class="answer">
+        <p>
+            Lassen Sie uns eine resultierende Zeichenkette deklarieren, die Sie am Ende zurückgeben.
+        </p>
+        <pre class="brush: python">
+res = ""
+...
+return res
+        </pre>
+        <p>
+            Eine Zeichenkette kann in Python als eine Sequenz interpretiert werden. Das bedeutet, dass Sie mit der Schleife <a target="_blank" href="https://www.w3schools.com/python/python_for_loops.asp">for</a> über die angegebene Zeichenkette iterieren können.
+        </p>
+        <pre class="brush: python">
+for char in line:
+    ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Was tun Sie mit jedem Zeichen innerhalb der Schleife?
+    </div>
+    <div class="answer">
+        <p>
+            Es gibt eigentlich zwei Fälle: wenn das Zeichen nicht dasselbe ist wie das vorherige (bereits zur resultierenden Zeichenkette hinzugefügt) oder wenn sie gleich sind. Wenn die resultierende Zeichenkette leer ist, handelt es sich um denselben Fall wie bei unterschiedlichen Zeichen. Verwenden Sie die Anweisung <a target="_blank" href="https://www.w3schools.com/python/python_conditions.asp">if/else</a>.
+        </p>
+        <p>
+            Schauen wir uns also den ersten Fall genauer an. Wenn die resultierende Zeichenfolge leer ist oder die aktuellen und vorherigen Zeichen unterschiedlich sind:
+        </p>
+        <pre class="brush: python">
+if not res or char!= res[-1]:
+    ...
+        </pre>
+        <p>
+            In diesem Fall fügen Sie einfach das aktuelle Zeichen zur resultierenden Zeichenfolge hinzu.
+        </p>
+        <pre class="brush: python">
+if not res or char!= res[-1]:
+    res += char        
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Was sollte der andere Fall sein?
+    </div>
+    <div class="answer">
+        <p>
+            Gemäß der Beschreibung müssen Sie beide benachbarten Buchstaben entfernen, wenn sie gleich sind. Einer der beiden Buchstaben ist ein aktuelles Zeichen, der zweite ist bereits in der resultierenden Zeichenfolge enthalten. In diesem Fall müssen Sie nur das letzte Zeichen mit <a target="_blank" href="https://www.w3schools.com/python/gloss_python_string_slice.asp">string slicing</a> aus der resultierenden Zeichenfolge entfernen.
+        </p>
+        <pre class="brush: python">
+else:
+    res = res[:-1]
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Wie sollte also meine endgültige Lösung aussehen?
+    </div>
+    <div class="answer">
+        <p>
+            Sie müssen nur alle vorherigen Hinweise zusammenführen und Ihren Code in einen Funktionsausdruck verpacken. Die Verwendung von Typ-Hinweisen für Eingabe- und Ausgabedaten wird dringend empfohlen.
+        </p>
+        <p>Hier ist die gesamte Lösung:</p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def adjacent_letters(line: str) -> str:
+
+    res = ""
+    for char in line:
+        if not res or char!= res[-1]:
+            res += char
+        else:
+            res = res[:-1]
+
+    return res
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Zeigen Sie mir mehr Lösungen!<br />
+        denn ich will ein echter 🥇 Python Ninnjaa sein!
+    </div>
+    <div class="answer">
+        <p>Klar, schnapp sie dir!</p>
+        <p>
+            Finden Sie mit dem Modul für reguläre Ausdrücke und Rekursion zwei gleiche benachbarte Buchstaben, ersetzen Sie sie durch eine leere Zeile und verwenden Sie diese neue Zeichenkette als Argument für einen neuen Funktionsaufruf. Geben Sie die Zeile zurück, wenn es keine gleichen benachbarten Buchstaben mehr gibt.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+from re import sub, search
+
+
+reg = r'(.)\1'
+
+def adjacent_letters(line: str) -> str:
+
+    return line if not search(reg, line) else adjacent_letters(sub(reg, '', line))
+        </pre>
+        </div>
+        <p>Klicken Sie im Missionsmenü auf <b>Best Solutions</b> und sehen Sie sich viele weitere interessante Lösungen an!</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Vielen Dank! Ich weiß und verstehe jetzt mehr! Alles funktioniert bestens!
+    </div>
+    <div class="answer">
+        Freut mich zu hören 👍!
+    </div>
+</div>
+</body>
